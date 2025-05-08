@@ -1,19 +1,21 @@
 <div class="container mt-4">
-  <form [formGroup]="form" (ngSubmit)="onSubmit()">
+  <h1 class="text-center mb-4">Análisis de Valores</h1>
+  <form [formGroup]="form">
     <div class="mb-3">
       <label for="lowerLimit" class="form-label">Límite Inferior</label>
-      <input type="number" class="form-control" formControlName="lowerLimit" required>
+      <input id="lowerLimit" type="number" class="form-control" formControlName="lowerLimit" required>
     </div>
     <div class="mb-3">
       <label for="upperLimit" class="form-label">Límite Superior</label>
-      <input type="number" class="form-control" formControlName="upperLimit" required>
+      <input id="upperLimit" type="number" class="form-control" formControlName="upperLimit" required>
     </div>
     <div class="mb-3">
       <label for="values" class="form-label">Valores numéricos (separados por comas)</label>
-      <input type="text" class="form-control" formControlName="values" required>
+      <input id="values" type="text" class="form-control" formControlName="values" required>
     </div>
-    <button type="submit" class="btn btn-primary w-100">Calcular</button>
+    <button type="submit" class="btn btn-primary w-100" (click)="onSubmit()">Calcular</button>
   </form>
+   <app-stadistics></app-stadistics>
 </div>
 
 

@@ -1,1 +1,22 @@
-<p>stadistics works!</p>
+<div class="modal fade" id="resultModal" tabindex="-1" aria-labelledby="resultModalLabel" aria-hidden="true">
+  <div class="modal-dialog modal-dialog-centered">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title">Resultados Estadísticos</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body" *ngIf="response">
+        <ul class="list-group">
+          <li class="list-group-item"><strong>Media:</strong> {{ response.mean }}</li>
+          <li class="list-group-item"><strong>Mediana:</strong> {{ response.median }}</li>
+          <li class="list-group-item"><strong>Desviación estándar:</strong> {{ response.standardDeviation }}</li>
+          <li class="list-group-item"><strong>Varianza:</strong> {{ response.variance }}</li>
+          <li class="list-group-item"><strong>Fuera de especificación:</strong> {{ response.outOfSpecCount }}</li>
+        </ul>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+      </div>
+    </div>
+  </div>
+</div>
