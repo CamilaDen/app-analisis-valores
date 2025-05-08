@@ -1,14 +1,14 @@
 import { Component } from '@angular/core';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RouterOutlet } from '@angular/router';
-import { Request } from './modules/stadistics/core/interfaces/request.interface';
+import { Request } from './modules/statistics/core/interfaces/request.interface';
 import { ReactiveFormsModule } from '@angular/forms';
-import { StadisticsService } from './modules/stadistics/core/services/stadistics.service';
-import { StadisticsComponent } from './modules/stadistics/components/stadistics/stadistics.component';
+import { StatisticsService } from './modules/statistics/core/services/statistics.service';
+import { StatisticsComponent } from './modules/statistics/components/statistics/statistics.component';
 
 @Component({
   selector: 'app-root',
-  imports: [RouterOutlet, ReactiveFormsModule, StadisticsComponent],
+  imports: [RouterOutlet, ReactiveFormsModule, StatisticsComponent],
   standalone: true,
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
@@ -17,7 +17,7 @@ import { StadisticsComponent } from './modules/stadistics/components/stadistics/
 export class AppComponent {
   form: FormGroup;
 
-  constructor( private fb: FormBuilder, private stadisticService: StadisticsService){
+  constructor( private fb: FormBuilder, private statisticservice: StatisticsService){
     this.form = this.fb.group({
       lowerLimit: ['', Validators.required],
       upperLimit: ['', Validators.required],
@@ -33,9 +33,9 @@ export class AppComponent {
         values: this.form.value.values.split(',').map(Number)
       };
 
-      this.stadisticService.CalculatStadistics(requestData).subscribe({
+      this.statisticservice.Calculatstatistics(requestData).subscribe({
         next: response => {
-          this.stadisticService.emitResult(response);
+          this.statisticservice.emitResult(response);
         },
         error: err => {
           console.error('Error al obtener estadísticas', err);
