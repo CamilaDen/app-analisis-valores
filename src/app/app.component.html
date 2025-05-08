@@ -8,12 +8,16 @@
     <div class="mb-3">
       <label for="upperLimit" class="form-label">Límite Superior</label>
       <input id="upperLimit" type="number" class="form-control" formControlName="upperLimit" required>
+      <div *ngIf="form.hasError('upperLessThanLower') && form.get('upperLimit')?.touched" class="alert alert-danger">
+        El Límite Superior no puede ser menor que el Límite Inferior.
+      </div>
     </div>
     <div class="mb-3">
       <label for="values" class="form-label">Valores numéricos (separados por comas)</label>
       <input id="values" type="text" class="form-control" formControlName="values" required>
     </div>
-    <button type="submit" class="btn btn-primary w-100" (click)="onSubmit()">Calcular</button>
+    <button type="submit" class="btn btn-primary w-100" (click)="onSubmit()" [disabled]="form.invalid">Calcular</button>
+    <button type="button" class="btn btn-outline-secondary w-100 mt-2" (click)="onClear()" [disabled]="form.pristine || form.untouched">Limpiar campos</button>
   </form>
    <app-statistics></app-statistics>
 </div>
